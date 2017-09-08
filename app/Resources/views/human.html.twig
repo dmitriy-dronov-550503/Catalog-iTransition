@@ -1,0 +1,11 @@
+
+{% block content %}
+    {{ form_start(form) }}
+    {{ form_row(form.firstName) }}
+    {{ form_row(form.lastName) }}
+    {{ form_row(form.patronymic) }}
+    {{ form_row(form.birthday) }}
+
+    {{ form_end(form) }}
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{# app/Resources/views/registration/register.html.twig #}
+{% extends 'base.html.twig' %}
+
+ {% form_theme form _self %}
+
+{% block _user_username_widget %}
+    {% set type = type|default('text') %}
+    <input type="{{ type }}" class="form-control" placeholder="Enter username" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+{% endblock %}
+
+{% block _user_email_widget %}
+    {% set type = type|default('email') %}
+    <input type="{{ type }}" class="form-control" placeholder="Enter email" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+{% endblock %}
+
+{% block _user_plainPassword_first_widget %}
+    {% set type = type|default('password') %}
+    <input type="{{ type }}" class="form-control" placeholder="Password" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+{% endblock %}
+
+{% block _user_plainPassword_second_widget %}
+    {% set type = type|default('password') %}
+    <input type="{{ type }}" class="form-control" placeholder="Confirm password" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+{% endblock %}
+
+{% block form_errors %}
+    {% spaceless %}
+        {% if errors|length > 0 %}
+            <div class="alert alert-info" role="alert">
+                {% for error in errors %}
+                    <li>{{ error.message }}</li>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endspaceless %}
+{% endblock form_errors %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="card my-3 p-3">
+                <div class="card-body">
+                    {{ form_start(form) }}
+                        {{ form_errors(form) }}
+                        {{ form_errors(form.username) }}
+                        {{ form_errors(form.email) }}
+                        {{ form_errors(form.plainPassword.first) }}
+                        {{ form_errors(form.plainPassword.second) }}
+                        <div class="form-group row justify-content-start">
+                            <label for="user_username" class="col-auto col-form-label mr-auto required">{{ form_label(form.username) }}:</label>
+                            <div class="col-9">
+                                {{ form_widget(form.username) }}
+                            </div>
+                        </div>
+                        <div class="form-group row justify-content-start">
+                            <label for="user_email" class="col-auto col-form-label mr-auto required">{{ form_label(form.email) }}:</label>
+                            <div class="col-9">
+                                {{ form_widget(form.email) }}
+                            </div>
+                        </div>
+                        <div class="form-group row justify-content-start">
+                            <label for="user_plainPassword_first" class="col-auto col-form-label required">{{ form_label(form.plainPassword.first) }}:</label>
+                            <div class="col-auto d-flex flex-nowrap">
+                                {{ form_widget(form.plainPassword.first) }}
+                            </div>
+                            <div class="col-auto d-flex flex-nowrap">
+                                {{ form_widget(form.plainPassword.second) }}
+                            </div>
+                        </div>
+
+                        <div class="clearfix">
+                            <button type="button submit" class="btn btn-success btn-block float-right">Register</button>
+                        </div>
+                    {{ form_end(form) }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+
+
+
+

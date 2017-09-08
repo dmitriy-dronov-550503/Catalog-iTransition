@@ -1,0 +1,12 @@
+
+{% block content %}
+<h1>Student</h1>
+    {{ form_start(form) }}
+    {{ form_row(form.firstName) }}
+    {{ form_row(form.lastName) }}
+    {{ form_row(form.patronymic) }}
+    {{ form_row(form.birthday) }}
+    {{ form_row(form.faculty) }}
+    {{ form_end(form) }}
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-3">I'am admin!</h1>
+            <p class="lead">Have you ever wanted to be an administrator? Now you can! Here each registered user can block or delete another.</p>
+            <hr class="my-4">
+            <p>Let's begin!</p>
+            <p class="lead">
+                {% if app.user %}
+                    <a class="btn btn-success btn-lg" href="{{ path('users_list') }}" role="button">Users list</a>
+                {% else %}
+                    <a class="btn btn-success btn-lg" href="{{ path('user_registration') }}" role="button">Register</a>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="card my-3 p-3">
+            <div class="card-body">
+
+            <div class="row justify-content-center m-2">
+                <div class="col-auto">
+                    <script src="//ulogin.ru/js/ulogin.js"></script>
+                    <div id="uLogin" data-ulogin="display=panel;theme=flat;fields=nickname,email;providers=vkontakte,facebook,twitter;hidden=;redirect_uri=http://localhost:8000/login/oauth;mobilebuttons=0;"></div>
+                </div>
+            </div>
+                <div class="flex-row justify-content-center">
+                        {% if error %}
+                            <div class="alert alert-warning" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+                    </div>
+
+                    <form action="{{ path('login') }}" method="post">
+                        <div class="form-group row justify-content-between">
+                            <label class="col-auto">Username:</label>
+                            <div class="col-auto">
+                                <input type="text" class="form-control" id="username" name="_username" placeholder="Enter username" value="{{ last_username }}" />
+                            </div>
+                        </div>
+                        <div class="form-group row justify-content-between">
+                            <label class="col-auto">Password:</label>
+                            <div class="col-auto">
+                                <input type="password" class="form-control" id="password" name="_password" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <button type="button submit" class="btn btn-success btn-block float-right">GO</button>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

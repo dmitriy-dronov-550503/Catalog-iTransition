@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center my-3">
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">Well done!</h4>
+                        <p>Congrulations! You were registered! Now you can delete or block someone of users.</p>
+                        <hr>
+                        <p class="mb-0"><a href="{{ path('login') }}">Login now</a> and go to 'Users list'.</p>
+                    </div>
+        </div>
+    </div>
+{% endblock %}
